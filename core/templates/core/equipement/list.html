@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+{% block title %}Équipements{% endblock %}
+{% block content %}
+<h2>Liste des équipements</h2>
+<ul>
+    {% for eq in equipements %}
+    <li>{{ eq.nom }} - {{ eq.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% block title %}Tableau de bord{% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+    <p>Bienvenue sur votre espace de gestion des réservations.</p>
+    <h1 class="mb-4">Tableau de bord</h1>
+  <h2>Statistiques des Réservations</h2>
+  <canvas id="reservationsChart" width="600" height="300"></canvas>
+  <canvas id="materielChart" width="600" height="300"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+fetch("/api/dashboard/stats/")
+  .then(response => response.json())
+  .then(data => {
+    new Chart(document.getElementById('reservationsChart'), {
+      type: 'bar',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Réservations par mois',
+          data: data.reservations,
+          backgroundColor: 'rgba(75, 192, 192, 0.5)'
+        }]
+      }
+    });
+    new Chart(document.getElementById('materielChart'), {
+      type: 'doughnut',
+      data: {
+        labels: data.materiel_labels,
+        datasets: [{
+          data: data.materiel_counts,
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }]
+      }
+    });
+  });
+</script>
+{% endblock %}

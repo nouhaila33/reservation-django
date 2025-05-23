@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+{% block title %}Nouvelle réservation{% endblock %}
+{% block content %}
+<h2>Réserver une salle</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Réserver</button>
+</form>
+{% endblock %}

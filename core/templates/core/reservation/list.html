@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% block title %}Liste des réservations{% endblock %}
+{% block content %}
+<h2>Réservations</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Salle</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Objet</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for res in reservations %}
+        <tr>
+            <td>{{ res.salle.nom }}</td>
+            <td>{{ res.date }}</td>
+            <td>{{ res.heure_debut }} - {{ res.heure_fin }}</td>
+            <td>{{ res.objet }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
