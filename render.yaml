@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: reservation-django
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn reservation_nouhaila.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: reservation_nouhaila.settings
+      - key: SECRET_KEY
+        value: votre_clé_secrète_django
+      - key: DEBUG
+        value: "False"
