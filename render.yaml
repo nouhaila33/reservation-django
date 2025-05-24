@@ -11,3 +11,17 @@ services:
         value: votre_clé_secrète_django
       - key: DEBUG
         value: "False"
+      - key: ALLOWED_HOSTS
+        value: "your-app-name.onrender.com"
+      - key: EMAIL_BACKEND
+        value: django.core.mail.backends.smtp.EmailBackend
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_USE_TLS
+        value: "True"
+      - key: EMAIL_HOST_USER
+        value: ton_email@gmail.com
+      - key: EMAIL_HOST_PASSWORD
+        value: ton_mot_de_passe
